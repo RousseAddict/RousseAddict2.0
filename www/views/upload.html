@@ -1,0 +1,24 @@
+<ion-view>
+	<ion-content>
+		
+		<div class="card" flow-init flow-name="up.img">
+			<div class="item item-button-right">
+    			<h2>Upload a Ginger Pix</h2>
+    			<p>Be sure of two things : she's redheads, and it's a PNG or JPG</p>
+    			<button class="button" ng-click="upload()">
+    				<i class="icon ion-upload royal"></i>
+    				Upload
+    			</button>
+  			</div>
+
+  			<div class="item item-image">
+    			<img flow-img="$flow.files[0]">
+  			</div>
+
+  			<span class="item item-icon-left royal" flow-btn>
+    			<i class="icon ion-upload"></i>
+    			Select image !
+  			</span>
+  		</div>
+	</ion-content>
+</ion-view>

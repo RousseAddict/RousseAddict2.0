@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'firebase']);
+var app = angular.module('starter', ['ionic', 'firebase', 'flow']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -37,6 +37,12 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller:"GalleryCtrl"
   })
 
+  $stateProvider.state("upload",{
+    url:"/upload",
+    templateUrl:"views/upload.html",
+    controller:"UploadCtrl"
+  })
+
   $stateProvider.state("about",{
     url:"/about",
     templateUrl:"views/about.html",
@@ -45,5 +51,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise('/home')
 
+});
+
+//main controller
+app.controller("AppCtrl", function($scope, $firebaseArray){
+    $scope.rootMsg = "App Ctrl";
+    console.log($scope.rootMsg);
+
+    var ref = new Firebase("https://rousseaddict.firebaseio.com/Rousses");
+    $scope.rousses = $firebaseArray(ref);
 });
 
