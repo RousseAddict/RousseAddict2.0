@@ -1,12 +1,36 @@
-app.controller("UploadCtrl", function($scope, $ionicPopup){
+app.controller("UploadCtrl", function($scope, $firebaseObject){
     $scope.msg = "Upload Ctrl";
     console.log($scope.msg);
 
-    $scope.up = {};
+    var refImg = new Firebase("https://rousseaddict.firebaseio.com/Upload");
+    var ImgObj = $firebaseObject(refImg);
 
-    $scope.upload = function(){
-    	console.log("started upload");
-    	console.log($scope.up);
-    	$scope.rousses.$add($scope.up);
+
+    function saveimage(e1) {
+        var filename = e1.target.files[0];
+        var fr = new FileReader();
+        fr.onload = function (res) {
+            $scope.image = res.target.result;
+            ImgObj.image = res.target.result;
+            ImgObj.$save().then(function (val) {
+            }, function (error) {
+                console.log("ERROR", error);
+            })
+        };
+        fr.readAsDataURL(filename);
     }
+
+    document.getElementById("file-upload").addEventListener('change', saveimage, false);
+
+    this.loadimage = function () {
+        ImgObj.$loaded().then(function (obj) {
+            $scope.profileImage = obj.image;
+            console.log("loaded", $scope.profileImage);
+            document.getElementById("profileImage").src = obj.image;
+            $scope.rousses.$add({image: $scope.profileImage, vote: 0});
+        }, function (error) {
+            console.log("ERROR", error);
+        });
+    };
+    this.loadimage();
 });
