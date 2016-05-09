@@ -25,7 +25,7 @@ app.run(function($ionicPlatform) {
 
 //routes
 app.config(function($stateProvider, $urlRouterProvider){
-  $stateProvider.state("app",{
+  $stateProvider.state("home",{
     url:"/home",
     templateUrl:"views/home.html",
     controller:"HomeCtrl"
@@ -60,17 +60,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 
 //main controller
-app.controller("AppCtrl", function($scope, $firebaseArray, $location){
+app.controller("AppCtrl", function($scope, $firebaseArray){
     $scope.rootMsg = "App Ctrl";
     console.log($scope.rootMsg);
 
     var ref = new Firebase("https://rousseaddict.firebaseio.com/Rousses");
     $scope.rousses = $firebaseArray(ref);
 
-    //go to info page
-    $scope.info = function(i){
-        $location.path("/info/"+i.num);
-        $scope.infos = i;
-    }
 });
 

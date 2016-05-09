@@ -5,7 +5,7 @@
     			<img ng-src="{{rousse.image}}">
   			</div>
 
-  			<a class="item item-icon-left royal" ng-click="info(rousse)">
+  			<a class="item item-icon-left royal" ui-sref="info({num: rousse.num})">
     			<i class="icon ion-information"></i>
     			See More Infos
     			<span class="badge badge-royal">{{rousse.like}}</span>

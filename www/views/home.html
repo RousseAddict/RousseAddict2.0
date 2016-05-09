@@ -8,7 +8,7 @@
                 <img ng-src="{{rousses[rousses.length -1].image}}">
             </div>
 
-            <a class="item item-icon-left royal" ng-click="info(rousses[rousses.length -1])">
+            <a class="item item-icon-left royal" ui-sref="info({num: rousses.length-1})">
                 <i class="icon ion-information"></i>
                 See More Infos
                 <span class="badge badge-royal">{{rousses[rousses.length -1].like}}</span>
