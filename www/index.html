@@ -18,8 +18,6 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angularfire.min.js"></script>
 
-    <!-- ng-flow -->
-    <script src="lib/ng-flow-standalone.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -30,6 +28,7 @@
     <script src="js/controllers/gallery.js"></script>
     <script src="js/controllers/about.js"></script>
     <script src="js/controllers/upload.js"></script>
+    <script src="js/controllers/info.js"></script>
   </head>
   <body ng-app="starter" ng-controller="AppCtrl">
     <ion-side-menus>
@@ -38,7 +37,7 @@
           <ion-nav-back-button></ion-nav-back-button>
           <ion-nav-title>#RousseAddict</ion-nav-title>
           <ion-nav-buttons side="primary">
-            <a class="button button-icon icon ion-plus" ng-href="#/upload"></a>
+            <a class="button button-icon icon ion-home" ng-href="#/"></a>
           </ion-nav-buttons>
           <ion-nav-buttons side="secondary">
             <button class="button button-icon icon ion-navicon-round" menu-toggle="right"></button>

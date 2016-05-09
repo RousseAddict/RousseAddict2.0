@@ -1,9 +1,11 @@
-app.controller("UploadCtrl", function($scope, $firebaseObject){
+app.controller("UploadCtrl", function($scope, $firebaseObject, $filter){
     $scope.msg = "Upload Ctrl";
     console.log($scope.msg);
 
     var refImg = new Firebase("https://rousseaddict.firebaseio.com/Upload");
     var ImgObj = $firebaseObject(refImg);
+    $scope.date = new Date();
+    $scope.description;
 
 
     function saveimage(e1) {
@@ -34,8 +36,14 @@ app.controller("UploadCtrl", function($scope, $firebaseObject){
     };
     this.loadimage();
 
-    $scope.validate = function(){
-        $scope.rousses.$add({image: $scope.profileImage, vote: 0});
+    $scope.validate = function(desc){
+        $scope.rousses.$add({
+        					image: $scope.profileImage, 
+        					like: 0,
+        					description: desc,
+        					date: $filter('date')(new Date(),'dd-MM-yyyy'),
+        					num: $scope.rousses.length
+        				});
         console.log("Rousses saved in Gallery !")
     }
 });

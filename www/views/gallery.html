@@ -5,10 +5,10 @@
     			<img ng-src="{{rousse.image}}">
   			</div>
 
-  			<a class="item item-icon-left royal" href="#">
+  			<a class="item item-icon-left royal" ng-click="info(rousse)">
     			<i class="icon ion-information"></i>
     			See More Infos
-    			<span class="badge badge-royal">{{rousse.vote}}</span>
+    			<span class="badge badge-royal">{{rousse.like}}</span>
 			</a>
 		</div>
 	</ion-content>
