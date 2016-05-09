@@ -1,10 +1,25 @@
 <ion-view hide-back-button="true">
 	<ion-content>
-		<div class="tabs-striped tabs-top tabs-background-royal tabs-color-light">
+        <div class="list card">
+            <div class="item item-divider">
+                <h1>Last uploaded !</h1>
+            </div>
+            <div class="item item-image">
+                <img ng-src="{{rousses[rousses.length -1].image}}">
+            </div>
+
+            <a class="item item-icon-left royal" href="#">
+                <i class="icon ion-information"></i>
+                See More Infos
+                <span class="badge badge-royal">{{rousses[rousses.length -1].vote}}</span>
+            </a>
+        </div>
+        
+		<div class="tabs-striped tabs-color-royal">
     		<div class="tabs">
-    		  <a class="tab-item active" href="#">
+    		  <a class="tab-item active" href="#/home">
     		    <i class="icon ion-home"></i>
-    		    Test
+    		    Home
     		  </a>
     		  <a class="tab-item" href="#">
     		    <i class="icon ion-star"></i>

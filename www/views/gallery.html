@@ -1,6 +1,6 @@
 <ion-view>
 	<ion-content>
-		<div class="list card" ng-repeat="rousse in rousses">
+		<div class="list card" ng-repeat="rousse in rousses.slice().reverse()">
   			<div class="item item-image">
     			<img ng-src="{{rousse.image}}">
   			</div>

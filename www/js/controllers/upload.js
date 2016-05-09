@@ -27,10 +27,15 @@ app.controller("UploadCtrl", function($scope, $firebaseObject){
             $scope.profileImage = obj.image;
             console.log("loaded", $scope.profileImage);
             document.getElementById("profileImage").src = obj.image;
-            $scope.rousses.$add({image: $scope.profileImage, vote: 0});
+            
         }, function (error) {
             console.log("ERROR", error);
         });
     };
     this.loadimage();
+
+    $scope.validate = function(){
+        $scope.rousses.$add({image: $scope.profileImage, vote: 0});
+        console.log("Rousses saved in Gallery !")
+    }
 });
