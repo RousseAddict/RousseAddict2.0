@@ -37,12 +37,14 @@ app.controller("UploadCtrl", function($scope, $firebaseObject, $filter){
     this.loadimage();
 
     $scope.validate = function(desc){
-        $scope.rousses.$add({
+        var id = $scope.rousses.length
+        var ref = new Firebase("https://rousseaddict.firebaseio.com/Rousses");
+        ref.child(id).set({
         					image: $scope.profileImage, 
         					like: 0,
         					description: desc,
         					date: $filter('date')(new Date(),'dd-MM-yyyy'),
-        					num: $scope.rousses.length
+        					num: id
         				});
         console.log("Rousses saved in Gallery !")
     }
