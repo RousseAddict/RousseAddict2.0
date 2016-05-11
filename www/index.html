@@ -28,7 +28,7 @@
     <script src="js/controllers/info.js"></script>
   </head>
   <body ng-app="starter" ng-controller="AppCtrl">
-    <ion-side-menus>
+    <ion-side-menus enable-menu-with-back-views="true">
       <ion-side-menu-content drag-content="false">
         <ion-nav-bar class="bar-royal">
           <ion-nav-back-button></ion-nav-back-button>
@@ -36,7 +36,7 @@
           <ion-nav-buttons side="primary">
             <a class="button button-icon icon ion-home" ng-href="#/"></a>
           </ion-nav-buttons>
-          <ion-nav-buttons side="secondary">
+          <ion-nav-buttons side="right">
             <button class="button button-icon icon ion-navicon-round" menu-toggle="right"></button>
           </ion-nav-buttons> 
         </ion-nav-bar>
