@@ -26,18 +26,19 @@
     <script src="js/controllers/about.js"></script>
     <script src="js/controllers/upload.js"></script>
     <script src="js/controllers/info.js"></script>
+    <script src="js/controllers/connexion.js"></script>
   </head>
   <body ng-app="starter" ng-controller="AppCtrl">
     <ion-side-menus enable-menu-with-back-views="true">
       <ion-side-menu-content drag-content="false">
         <ion-nav-bar class="bar-royal">
           <ion-nav-back-button></ion-nav-back-button>
-          <ion-nav-title>#RousseAddict</ion-nav-title>
-          <ion-nav-buttons side="primary">
-            <a class="button button-icon icon ion-home" ng-href="#/"></a>
+          <ion-nav-title><img src="img/logoBlanc.png" height="52px"></ion-nav-title>
+          <ion-nav-buttons side="left">
+            <a class="button button-icon icon ion-log-in" ui-sref="connexion"></a>
           </ion-nav-buttons>
           <ion-nav-buttons side="right">
-            <button class="button button-icon icon ion-navicon-round" menu-toggle="right"></button>
+            <button class="button button-icon icon ion-navicon" menu-toggle="right"></button>
           </ion-nav-buttons> 
         </ion-nav-bar>
         <ion-nav-view></ion-nav-view/>
@@ -59,9 +60,15 @@
           <div class="item item-divider">
             
           </div>
+          <!--
           <a class="item item-icon-left" ui-sref="upload">
             <i class="icon ion-upload"></i>
               Upload
+          </a>
+        -->
+          <a class="item item-icon-left" ui-sref="connexion">
+            <i class="icon ion-person"></i>
+              My Profile
           </a>
         </div>
       </ion-side-menu>

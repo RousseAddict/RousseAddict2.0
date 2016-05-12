@@ -23,6 +23,13 @@ app.run(function($ionicPlatform) {
   });
 });
 
+//Config for android
+app.config(function($ionicConfigProvider) {
+    //$ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+    $ionicConfigProvider.navBar.alignTitle('center');
+}); 
+
 //routes
 app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider.state("home",{
@@ -47,6 +54,12 @@ app.config(function($stateProvider, $urlRouterProvider){
     url:"/upload",
     templateUrl:"views/upload.html",
     controller:"UploadCtrl"
+  })
+
+  $stateProvider.state("connexion",{
+    url:"/connexion",
+    templateUrl:"views/connexion.html",
+    controller:"ConnexionCtrl"
   })
 
   $stateProvider.state("about",{
