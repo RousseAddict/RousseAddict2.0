@@ -27,6 +27,7 @@
     <script src="js/controllers/upload.js"></script>
     <script src="js/controllers/info.js"></script>
     <script src="js/controllers/connexion.js"></script>
+    <script src="js/controllers/profile.js"></script>
   </head>
   <body ng-app="starter" ng-controller="AppCtrl">
     <ion-side-menus enable-menu-with-back-views="true">
@@ -66,7 +67,7 @@
               Upload
           </a>
         -->
-          <a class="item item-icon-left" ui-sref="connexion" ng-show="user.auth">
+          <a class="item item-icon-left" ui-sref="profile" ng-show="user.auth">
             <i class="icon ion-person"></i>
               My Profile
           </a>

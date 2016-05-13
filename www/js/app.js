@@ -62,6 +62,12 @@ app.config(function($stateProvider, $urlRouterProvider){
     controller:"ConnexionCtrl"
   })
 
+    $stateProvider.state("profile",{
+    url:"/profile",
+    templateUrl:"views/profile.html",
+    controller:"ProfileCtrl"
+  })
+
   $stateProvider.state("about",{
     url:"/about",
     templateUrl:"views/about.html",
@@ -80,8 +86,8 @@ app.controller("AppCtrl", function($scope, $firebaseArray, $ionicPopup){
     var ref = new Firebase("https://rousseaddict.firebaseio.com/Rousses");
     $scope.rousses = $firebaseArray(ref);
 
+    //store locally user info
     $scope.user = {};
-    $scope.user.name = "";
     $scope.user.auth = (ref.getAuth() != null);
 
     $scope.logout = function (){

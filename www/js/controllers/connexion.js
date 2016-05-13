@@ -4,7 +4,7 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
 
     $scope.switchlogsign = true;
 
-    var userRef = new Firebase("https://rousseaddict.firebaseio.com");
+    var userRef = new Firebase("https://rousseaddict.firebaseio.com/Users");
     
     //create account
     $scope.user;
@@ -30,20 +30,23 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
      				subTitle: error,
    				});
     			console.log("Error creating user:", error);
-  			} else {
+  			} else 
+          {
   				var alertPopup = $ionicPopup.alert({
    					title: 'Successfully',
      				subTitle: 'Account created !',
    				});
-   				userRef.child("Users").child(userData.uid).set({
+   				userRef.child(userData.uid).set({
       				user: user,
-      				email : mail
+      				email : mail,
+              role : "user",
+              date: $filter('date')(new Date(),'dd-MM-yyyy')
     			});
   				console.log("Successfully created user account with uid:", userData.uid);
   				$scope.switchlogsign != $scope.switchlogsign;
-  			}
-		  });
-		}
+  			  }
+		    });
+		  }
     }
 
 
@@ -52,7 +55,7 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
     	userRef.authWithPassword({
   			email    : mail,
   			password : pass
-		}, authHandler);
+		  }, authHandler);
     }
     function authHandler(error, authData) {
   		if (error) {
@@ -67,6 +70,7 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
      		subTitle: 'Connected',
    		  });
         $scope.user.auth = true;
+        $scope.user.id = authData.uid;
         $location.path("/");
   		}
 	}
