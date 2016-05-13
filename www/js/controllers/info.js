@@ -1,4 +1,4 @@
-app.controller("InfoCtrl", function($scope, $stateParams, $ionicPopup, $firebaseObject){
+app.controller("InfoCtrl", function($scope, $stateParams, $ionicPopup, $firebaseObject, $location){
     $scope.msg = "Info Ctrl";
     console.log($scope.msg);
 
@@ -13,9 +13,18 @@ app.controller("InfoCtrl", function($scope, $stateParams, $ionicPopup, $firebase
 
 
     $scope.like = function(){
-
+        if (infoRef.getAuth() == null){
+            $location.path('/connexion');
+        }
+        else{
+            infoRef.child('like').set($scope.infos.like +1);
+            var alertPopup = $ionicPopup.alert({
+                title: 'Liked !'
+            });
+        }
     }
 
+    $scope.showComent = false;
     $scope.comment = function(){
 
     }

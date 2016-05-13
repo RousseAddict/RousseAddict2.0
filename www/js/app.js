@@ -73,12 +73,24 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 
 //main controller
-app.controller("AppCtrl", function($scope, $firebaseArray){
+app.controller("AppCtrl", function($scope, $firebaseArray, $ionicPopup){
     $scope.rootMsg = "App Ctrl";
     console.log($scope.rootMsg);
 
     var ref = new Firebase("https://rousseaddict.firebaseio.com/Rousses");
     $scope.rousses = $firebaseArray(ref);
 
+    $scope.user = {};
+    $scope.user.name = "";
+    $scope.user.auth = (ref.getAuth() != null);
+
+    $scope.logout = function (){
+      ref.unauth();
+      var alertPopup = $ionicPopup.alert({
+        title: 'Disconnected'
+      });
+      $scope.user.auth = false;
+      console.log(ref.getAuth() == null);
+    }
 });
 

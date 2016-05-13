@@ -35,7 +35,7 @@
           <ion-nav-back-button></ion-nav-back-button>
           <ion-nav-title><img src="img/logoBlanc.png" height="52px"></ion-nav-title>
           <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-log-in" ui-sref="connexion"></a>
+            <a class="button button-icon icon ion-log-in" ui-sref="connexion" ng-hide="user.auth"></a>
           </ion-nav-buttons>
           <ion-nav-buttons side="right">
             <button class="button button-icon icon ion-navicon" menu-toggle="right"></button>
@@ -66,9 +66,13 @@
               Upload
           </a>
         -->
-          <a class="item item-icon-left" ui-sref="connexion">
+          <a class="item item-icon-left" ui-sref="connexion" ng-show="user.auth">
             <i class="icon ion-person"></i>
               My Profile
+          </a>
+          <a class="item item-icon-left" ng-click="logout()" ng-show="user.auth">
+            <i class="icon ion-log-out"></i>
+              Log Out
           </a>
         </div>
       </ion-side-menu>
