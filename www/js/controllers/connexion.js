@@ -1,4 +1,4 @@
-app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
+app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location, $filter){
     $scope.msg = "Connexion Ctrl";
     console.log($scope.msg);
 
@@ -7,7 +7,7 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
     var userRef = new Firebase("https://rousseaddict.firebaseio.com/Users");
     
     //create account
-    $scope.user;
+    $scope.username;
     $scope.pass;
     $scope.pass2;
     $scope.mail;
@@ -32,18 +32,19 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
     			console.log("Error creating user:", error);
   			} else 
           {
-  				var alertPopup = $ionicPopup.alert({
-   					title: 'Successfully',
-     				subTitle: 'Account created !',
-   				});
-   				userRef.child(userData.uid).set({
-      				user: user,
-      				email : mail,
+          var alertPopup = $ionicPopup.alert({
+            title: 'Successfully',
+            subTitle: 'Account created !',
+          });
+          userRef.child(userData.uid).set({
+              user: user,
+              email : mail,
               role : "user",
-              date: $filter('date')(new Date(),'dd-MM-yyyy')
-    			});
-  				console.log("Successfully created user account with uid:", userData.uid);
-  				$scope.switchlogsign != $scope.switchlogsign;
+              date: $filter('date')(new Date(),'dd-MM-yyyy'),
+              description: ""
+          });
+  				$scope.switchlogsign = true;
+          console.log("Successfully created user account with uid:", userData.uid);
   			  }
 		    });
 		  }
@@ -70,7 +71,6 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location){
      		subTitle: 'Connected',
    		  });
         $scope.user.auth = true;
-        $scope.user.id = authData.uid;
         $location.path("/");
   		}
 	}

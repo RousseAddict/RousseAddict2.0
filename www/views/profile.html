@@ -6,6 +6,13 @@
 				<h2>Profile : {{user.name}}</h2>
 				<p>{{user.date}}</p>
 			</div>
+			<div class="item item-body">
+				<div class="item-image">
+					<button class="button button-royal" ng-click="desc()">
+				Change Description</button>
+				</div>
+				About me : {{user.description}}
+			</div>
 		</div>
 	</ion-content>
 </ion-view>
