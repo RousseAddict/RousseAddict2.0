@@ -44,6 +44,7 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location, $filter
               description: ""
           });
   				$scope.switchlogsign = true;
+          $location.path("/connexion");
           console.log("Successfully created user account with uid:", userData.uid);
   			  }
 		    });
@@ -72,6 +73,13 @@ app.controller("ConnexionCtrl", function($scope, $ionicPopup, $location, $filter
    		  });
         $scope.user.auth = true;
         $location.path("/");
+        userRef.child(authData.uid+'/role').once('value',function(e){
+          if (e.val() == "admin")
+            $scope.user.admin=true;
+          else
+            $scope.user.admin=false;
+        });
+        console.log($scope.user.admin);
   		}
 	}
 });
