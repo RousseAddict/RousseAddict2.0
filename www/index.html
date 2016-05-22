@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <title>RousseAddict</title>
 
 
     <!-- compiled css output -->
@@ -31,10 +32,10 @@
   </head>
   <body ng-app="starter" ng-controller="AppCtrl">
     <ion-side-menus enable-menu-with-back-views="true">
-      <ion-side-menu-content drag-content="false">
+      <ion-side-menu-content drag-content="true">
         <ion-nav-bar class="bar-royal">
           <ion-nav-back-button></ion-nav-back-button>
-          <ion-nav-title><img src="img/logoBlanc.png" height="52px"></ion-nav-title>
+          <ion-nav-title><a ui-sref="home"><img src="img/logoBlanc.png" height="52px"></a></ion-nav-title>
           <ion-nav-buttons side="left">
             <a class="button button-icon icon ion-log-in" ui-sref="connexion" ng-hide="user.auth"></a>
           </ion-nav-buttons>
@@ -50,22 +51,22 @@
               <b>Menu</b>
               <i class="icon"><img src="img/logoBlanc.png" height="52px"></i>
           </div>
-          <a class="item item-icon-left" ui-sref="home">
+          <a class="item item-icon-left" ui-sref="home" menu-close>
             <i class="icon ion-home"></i>
               Home
           </a>
-          <a class="item item-icon-left" ui-sref="gallery">
+          <a class="item item-icon-left" ui-sref="gallery" menu-close>
             <i class="icon ion-images"></i>
               Gallery
           </a>
           <div class="item item-divider">
             
           </div>
-          <a class="item item-icon-left" ui-sref="profile" ng-show="user.auth">
+          <a class="item item-icon-left" ui-sref="profile" ng-show="user.auth" menu-close>
             <i class="icon ion-person"></i>
               My Profile
           </a>
-          <a class="item item-icon-left" ng-click="logout()" ng-show="user.auth">
+          <a class="item item-icon-left" ng-click="logout()" ng-show="user.auth" menu-close>
             <i class="icon ion-log-out"></i>
               Log Out
           </a>
@@ -73,7 +74,7 @@
           <div class="item item-divider" ng-show="user.admin">
             
           </div>
-          <a class="item item-icon-left" ui-sref="upload" ng-show="user.admin">
+          <a class="item item-icon-left" ui-sref="upload" ng-show="user.admin" menu-close>
             <i class="icon ion-upload"></i>
               Upload
           </a>
